@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
-  // switch did not work the way the material implied
   return (
     <View style={styles.container}>
       <View >
