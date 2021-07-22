@@ -4,7 +4,7 @@ import { View } from 'react-native';
 
 const AppBarTab = ({ tabTitle }) => {
   return (
-    <View>
+    <View style={{ padding: 10 }}>
       <Text color='textTab'>{tabTitle}</Text>
     </View>
   );

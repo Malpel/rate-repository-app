@@ -10,18 +10,23 @@ const styles = StyleSheet.create({
     fontFamily: theme.fonts.main,
     fontWeight: theme.fontWeights.normal,
   },
+  
   colorTextSecondary: {
     color: theme.colors.textSecondary,
   },
+
   colorPrimary: {
     color: theme.colors.primary,
   },
+
   fontSizeSubheading: {
     fontSize: theme.fontSizes.subheading,
   },
+
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
   },
+
   colorTextTab: {
     color: theme.colors.textTab
   }

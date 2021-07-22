@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
+import theme from '../theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,8 +14,10 @@ const styles = StyleSheet.create({
 const Main = () => {
   return (
     <View style={styles.container}>
-      <AppBar />
-      <RepositoryList />
+      <View style={{ backgroundColor: theme.colors.mainBackground }}>
+        <AppBar />
+        <RepositoryList />
+      </View>
     </View>
   );
 };
