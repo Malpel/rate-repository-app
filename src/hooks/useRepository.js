@@ -7,6 +7,10 @@ const useRepositories = () => {
     fetchPolicy: 'cache-and-network'
   });
 
+  // some very weird behavior with this one
+  // when starting the application data does not have the repositories property,
+  // but when removed and reloaded, it complains that it is now missing,
+  // and writing data.repositories again and reloading makes the app work
   const repositories = data.repositories;
 
   return { repositories, loading, error };
