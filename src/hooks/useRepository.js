@@ -11,7 +11,10 @@ const useRepositories = () => {
   // when starting the application data does not have the repositories property,
   // but when removed and reloaded, it complains that it is now missing,
   // and writing data.repositories again and reloading makes the app work
-  const repositories = data.repositories;
+  /**
+   * This solves the problem described above.
+   */
+  const repositories = data ? data.repositories : { edges: [] };
 
   return { repositories, loading, error };
 };
