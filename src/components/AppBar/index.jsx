@@ -5,9 +5,9 @@ import { Link } from 'react-router-native';
 import { useQuery } from '@apollo/client';
 
 import AppBarTab from './AppBarTab';
-import theme from '../theme';
-import { AUTHORIZED_USER } from '../graphql/queries';
-import useSignOut from '../hooks/useSignOut';
+import theme from '../../theme';
+import { AUTHORIZED_USER } from '../../graphql/queries';
+import useSignOut from '../../hooks/useSignOut';
 
 const styles = StyleSheet.create({
   container: {

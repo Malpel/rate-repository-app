@@ -1,0 +1,14 @@
+import React from 'react';
+
+import useRepositories from '../../hooks/useRepository';
+import RepositoryListContainer from './RepositoryListContainer';
+
+
+const RepositoryList = () => {
+  const { repositories } = useRepositories();
+
+  return <RepositoryListContainer repositories={repositories}/>;
+ 
+};
+
+export default RepositoryList;

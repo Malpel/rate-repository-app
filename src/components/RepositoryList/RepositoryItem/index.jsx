@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
+
 import RepositoryNumericInfo from './RepositoryNumericInfo';
 import RepositoryTextInfo from './RepositoryTextInfo';
 

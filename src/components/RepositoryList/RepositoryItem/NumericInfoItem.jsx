@@ -1,6 +1,8 @@
 import React from 'react';
-import Text from './Text';
 import { View, StyleSheet } from 'react-native';
+
+import Text from '../../Text';
+import { numberFormat } from '../../../utils/numberFormat';
 
 const styles = StyleSheet.create({
   flexItem: {
@@ -17,10 +19,7 @@ const NumericInfoItem = ({ name, numericInfo }) => {
   return (
     <View style={styles.flexColumn}>
       <View style={styles.flexItem}>
-        {numericInfo >= 1000
-          ? <Text fontWeight='bold'>{Math.round((numericInfo / 1000) * 10) / 10}k</Text>
-          : <Text fontWeight='bold'>{numericInfo}</Text>
-        }
+        <Text fontWeight='bold' testID={name}>{numberFormat(numericInfo)}</Text>
       </View>
       <View style={styles.flexItem}>
         <Text>{name}</Text>

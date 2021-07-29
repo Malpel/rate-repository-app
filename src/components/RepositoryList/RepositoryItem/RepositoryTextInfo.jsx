@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Text from './Text';
-import theme from '../theme';
+
+import Text from '../../Text';
+import theme from '../../../theme';
 
 const styles = StyleSheet.create({
   flexContainer: {
@@ -33,13 +34,13 @@ const RepositoryTextInfo = ({ fullName, description, language }) => {
   return (
     <View style={styles.flexColumn}>
       <View style={styles.flexItem}>
-        <Text fontWeight='bold'>{fullName}</Text>
+        <Text fontWeight='bold' testID='name'>{fullName}</Text>
       </View>
       <View style={styles.flexItem}>
-        <Text style={{ flex: 1, flexWrap: 'wrap' }}>{description}</Text>
+        <Text style={{ flex: 1, flexWrap: 'wrap' }} testID='description'>{description}</Text>
       </View>
       <View style={styles.flexItem}>
-        <Text style={styles.languageTag}>{language}</Text>
+        <Text style={styles.languageTag} testID='language'>{language}</Text>
       </View>
     </View>
   );

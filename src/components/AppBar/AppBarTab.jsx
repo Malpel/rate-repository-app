@@ -1,6 +1,8 @@
 import React from 'react';
-import Text from './Text';
 import { View } from 'react-native';
+
+import Text from '../Text';
+
 
 const AppBarTab = ({ tabTitle }) => {
   return (
