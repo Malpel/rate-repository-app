@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { Route, Switch, Redirect } from 'react-router-native';
+
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import theme from '../theme';
-import { Route, Switch, Redirect } from 'react-router-native';
-import SignIn from './SignIn';
+import SignInForm from '../components/SignInForm';
+import SignIn from '../components/SignInForm/Signin';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,7 +26,7 @@ const Main = () => {
             <RepositoryList />
           </Route>
           <Route path='/signin/'>
-            <SignIn />
+            <SignInForm onSubmit={SignIn} />
           </Route>
           <Redirect to="/" />
         </Switch>

@@ -49,10 +49,10 @@ describe('RepositoryList', () => {
           },
         ],
       };
-      const { debug, getAllByTestId } = render(<RepositoryListContainer repositories={repositories} />);
+      const { getAllByTestId } = render(<RepositoryListContainer repositories={repositories} />);
 
       // Add your test code here
-      debug();
+      //debug();
 
       for (let i = 0; i < repositories.edges.length; i++) {
         expect(getAllByTestId('name')[i]).toHaveTextContent(repositories.edges[i].node.fullName);
