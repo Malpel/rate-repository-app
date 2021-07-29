@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 
 import RepositoryNumericInfo from './RepositoryNumericInfo';
 import RepositoryTextInfo from './RepositoryTextInfo';
+import BlueButton from '../../BlueButton';
+
 
 const styles = StyleSheet.create({
   logo: {
@@ -30,7 +33,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const RepositoryItem = ({ item }) => {
+const handleOpenWithWebBrowser = (url) => {
+  WebBrowser.openBrowserAsync(url);
+};
+
+const RepositoryItem = ({ item, showGitHubButton }) => {
   return (
     <View style={{ padding: 10, backgroundColor: 'white' }}>
       <View style={styles.flexContainer}>
@@ -50,6 +57,9 @@ const RepositoryItem = ({ item }) => {
 
       <RepositoryNumericInfo forks={item.forksCount} stars={item.stargazersCount}
         rating={item.ratingAverage} reviews={item.reviewCount} />
+
+      {showGitHubButton && <BlueButton text={'GitHub'}
+        onPress={() => handleOpenWithWebBrowser(item.url)} />}
     </View>
   );
 };

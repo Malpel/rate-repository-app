@@ -19,7 +19,7 @@ const NumericInfoItem = ({ name, numericInfo }) => {
   return (
     <View style={styles.flexColumn}>
       <View style={styles.flexItem}>
-        <Text fontWeight='bold' testID={name}>{numberFormat(numericInfo)}</Text>
+        <Text fontWeight='bold' testID={name}>{numericInfo && numberFormat(numericInfo)}</Text>
       </View>
       <View style={styles.flexItem}>
         <Text>{name}</Text>

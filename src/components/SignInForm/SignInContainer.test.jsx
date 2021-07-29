@@ -1,19 +1,26 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react-native';
+import { render, fireEvent, waitFor, act } from '@testing-library/react-native';
 
-import SignInForm from './index';
+import SignInContainer from './SignInContainer';
 
 describe('SignIn', () => {
   describe('SignInContainer', () => {
     it('calls onSubmit function with correct arguments when a valid form is submitted', async () => {
       // render the SignInContainer component, fill the text inputs and press the submit button
       const onSubmit = jest.fn();
-      const { getByTestId } = render(<SignInForm onSubmit={onSubmit} />);
+      const { getByTestId } = render(<SignInContainer onSubmit={onSubmit} />);
 
-      fireEvent.changeText(getByTestId('username'), 'kalle');
-      fireEvent.changeText(getByTestId('password'), 'password');
-      fireEvent.press(getByTestId('submitButton'));
+      await act(async () => {
+        await fireEvent.changeText(getByTestId('username'), 'kalle');
+      });
 
+      await act(async () => {
+        await fireEvent.changeText(getByTestId('password'), 'password');
+      });
+
+      await act(async () => {
+        await fireEvent.press(getByTestId('submitButton'));
+      });
 
       await waitFor(() => {
         // expect the onSubmit function to have been called once and with a correct first argument

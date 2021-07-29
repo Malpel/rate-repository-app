@@ -1,5 +1,6 @@
 import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet, Pressable } from 'react-native';
+import { useHistory } from 'react-router-native';
 
 import RepositoryItem from './RepositoryItem';
 
@@ -17,13 +18,21 @@ const RepositoryListContainer = ({ repositories }) => {
     ? repositories.edges.map(edge => edge.node)
     : [];
 
+  const history = useHistory();
+
+  const onPress = (repoId) => {
+    history.push(`/${repoId}`);
+  };
+
   return (
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item, index }) => (
-        <RepositoryItem item={item} key={index} testID="repoItem" />
+        <Pressable onPress={() => onPress(item.id)}>
+          <RepositoryItem item={item} key={index} testID="repoItem" showGitHubButton={false} />
+        </Pressable>
       )}
     />
   );
