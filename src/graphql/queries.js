@@ -41,6 +41,20 @@ export const GET_REPOSITORY_BY_ID = gql`
       ratingAverage
       language
       url
+      reviews {
+        edges {
+          node {
+            id
+            text
+            rating
+            createdAt
+            user {
+              id
+              username
+            }
+          }
+        }
+      }
     }
   }
 `;

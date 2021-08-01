@@ -6,13 +6,14 @@ import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import theme from '../theme';
 import SignInForm from '../components/SignInForm';
-import SingleRepositoryView from './SingleRepositoryView';
+import SingleRepository from '../components/SingleRepository';
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     flexShrink: 1,
-    backgroundColor: theme.colors.mainBackground
+    backgroundColor: theme.colors.mainBackground,
+    flex: 1
   },
 });
 
@@ -29,7 +30,7 @@ const Main = () => {
             <SignInForm />
           </Route>
           <Route path='/:repositoryId/'>
-            <SingleRepositoryView />
+            <SingleRepository />
           </Route>
           <Redirect to="/" />
         </Switch>
