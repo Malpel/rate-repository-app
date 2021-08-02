@@ -5,8 +5,9 @@ import { Route, Switch, Redirect } from 'react-router-native';
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import theme from '../theme';
-import SignInForm from '../components/SignInForm';
-import SingleRepository from '../components/SingleRepository';
+import SignInForm from './SignInForm';
+import SingleRepository from './SingleRepository';
+import ReviewForm from './ReviewForm';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,10 +27,13 @@ const Main = () => {
           <Route exact path='/' >
             <RepositoryList />
           </Route>
-          <Route path='/signin/'>
+          <Route path='/signin'>
             <SignInForm />
           </Route>
-          <Route path='/:repositoryId/'>
+          <Route path='/review'>
+            <ReviewForm />
+          </Route>
+          <Route path='/:repositoryId'>
             <SingleRepository />
           </Route>
           <Redirect to="/" />

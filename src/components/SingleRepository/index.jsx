@@ -10,8 +10,9 @@ const SingleRepository = () => {
   const { repository } = useSingleRepository(repositoryId);
 
   return (
-    <View style={{ flexGrow:1, marginBottom: 125 }}>
-      <ReviewList reviews={repository.reviews} repository={repository }/>
+    <View style={{ flexGrow: 1, marginBottom: 125 }}>
+      {(repository && repository.reviews)
+        && <ReviewList reviews={repository.reviews} repository={repository} />}
     </View>
   );
 };

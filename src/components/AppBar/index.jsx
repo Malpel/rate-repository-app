@@ -32,6 +32,14 @@ const AppBar = () => {
             <AppBarTab tabTitle={'Repositories'} />
           </Link>
         </Pressable>
+
+        {(data && data.authorizedUser)
+          && <Pressable>
+            <Link to='/review'>
+              <AppBarTab tabTitle={'Create a review'} />
+            </Link>
+          </Pressable>}
+
         {data && data.authorizedUser
           ? <Pressable onPress={signOut}>
             <AppBarTab tabTitle={'Sign out'} />
