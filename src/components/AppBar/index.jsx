@@ -51,6 +51,13 @@ const AppBar = () => {
             </Link>
           </Pressable>
         }
+
+        {!(data && data.authorizedUser)
+          && <Pressable>
+            <Link to='/signup'>
+              <AppBarTab tabTitle={'Sign up'} />
+            </Link>
+          </Pressable>}
       </ScrollView>
     </View>
   );
