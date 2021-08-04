@@ -3,6 +3,7 @@ import { FlatList, View, StyleSheet, Pressable } from 'react-native';
 import { useHistory } from 'react-router-native';
 
 import RepositoryItem from './RepositoryItem';
+import RepositoryListHeader from './RepositoryListHeader';
 
 const styles = StyleSheet.create({
   separator: {
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ repositories }) => {
+const RepositoryListContainer = ({ repositories, setOrder }) => {
   // Get the nodes from the edges array
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -28,6 +29,7 @@ const RepositoryListContainer = ({ repositories }) => {
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
+      ListHeaderComponent={() => <RepositoryListHeader setOrder={setOrder}/>}
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item, index }) => (
         <Pressable onPress={() => onPress(item.id)}>
