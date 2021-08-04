@@ -28,11 +28,14 @@ export class RepositoryListContainer extends React.Component {
     const repositoryNodes = props.repositories
       ? props.repositories.edges.map(edge => edge.node)
       : [];
+
     return (
       <FlatList
         data={repositoryNodes}
         ItemSeparatorComponent={ItemSeparator}
         ListHeaderComponent={this.renderHeader}
+        onEndReached={props.onEndReach}
+        onEndReachedThreshold={0.5}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => (
           <Pressable onPress={() => props.onPress(item.id)}>

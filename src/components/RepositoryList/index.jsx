@@ -9,7 +9,7 @@ import { RepositoryListContainer } from './RepositoryListContainer';
   // this whole thing seems bloated
 const RepositoryList = () => {
   const [orderSelection, setOrderSelection] = useState({ orderBy: 'CREATED_AT', direction: 'DESC', searchKeyword: '' });
-  let { repositories } = useRepositories(orderSelection.orderBy, orderSelection.direction, orderSelection.searchKeyword);
+  const { repositories, fetchMore } = useRepositories(orderSelection.orderBy, orderSelection.direction, orderSelection.searchKeyword);
   const [searchQuery, setSearchQuery] = useState();
   const [value] = useDebounce(searchQuery, 750);
   const history = useHistory();
@@ -38,11 +38,16 @@ const RepositoryList = () => {
     setOrder('SEARCH_KEYWORD', value);
   }, [value]);
 
+  const onEndReach = () => {
+    fetchMore();
+  };
+
   return (
     <View style={{ marginBottom: 140 }}>
       <RepositoryListContainer repositories={repositories}
         setOrder={setOrder} onPress={onPress}
-        searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        searchQuery={searchQuery} setSearchQuery={setSearchQuery}
+        onEndReach={onEndReach} />
     </View>
   );
 };

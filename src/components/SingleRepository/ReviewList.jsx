@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const ReviewList = ({ reviews, repository }) => {
+const ReviewList = ({ reviews, repository, onEndReached }) => {
   const reviewNodes = reviews
     ? reviews.edges.map(edge => edge.node)
     : [];
@@ -23,6 +23,8 @@ const ReviewList = ({ reviews, repository }) => {
       ItemSeparatorComponent={ItemSeparator}
       ListHeaderComponent={() => <RepositoryItem item={repository} showGitHubButton={true} />}
       ListFooterComponent={<View style={{height: 20}}/>}
+      onEndReached={onEndReached}
+      onEndReachedThreshold={0.5}
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item, index }) => (
         <Review review={item} key={index} />

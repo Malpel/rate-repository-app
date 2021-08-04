@@ -7,12 +7,17 @@ import ReviewList from './ReviewList';
 
 const SingleRepository = () => {
   const { repositoryId } = useParams();
-  const { repository } = useSingleRepository(repositoryId);
+  const { repository, fetchMore } = useSingleRepository(repositoryId);
+
+  const onEndReach = () => {
+    fetchMore();
+  };
 
   return (
     <View style={{ flexGrow: 1, marginBottom: 125 }}>
       {(repository && repository.reviews)
-        && <ReviewList reviews={repository.reviews} repository={repository} />}
+        && <ReviewList reviews={repository.reviews} repository={repository}
+        onEndReached={onEndReach} />}
     </View>
   );
 };

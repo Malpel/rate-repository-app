@@ -3,21 +3,32 @@ import { useQuery } from "@apollo/client";
 import { GET_REPOSITORIES } from "../graphql/queries";
 
 const useRepositories = (orderBy, orderDirection, searchKeyword) => {
-  const { data, error, loading } = useQuery(GET_REPOSITORIES, {
+  const { data, error, loading, fetchMore } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: 'cache-and-network',
-    variables: { orderBy, orderDirection, searchKeyword }
+    variables: { first: 5, orderBy, orderDirection, searchKeyword }
   });
 
-  // some very weird behavior with this one
-  // when starting the application data does not have the repositories property,
-  // but when removed and reloaded, it complains that it is now missing,
-  // and writing data.repositories again and reloading makes the app work
-  /**
-   * This solves the problem described above.
-   */
+  const handleFetchMore = () => {
+    const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
+
+    if (!canFetchMore) {
+      return;
+    }
+
+    fetchMore({
+      variables: {
+        after: data.repositories.pageInfo.endCursor,
+        orderBy,
+        orderDirection,
+        searchKeyword,
+        first: 5
+      },
+    });
+  };
+
   const repositories = data ? data.repositories : { edges: [] };
 
-  return { repositories, loading, error };
+  return { repositories, loading, error, fetchMore: handleFetchMore };
 };
 
 export default useRepositories;
