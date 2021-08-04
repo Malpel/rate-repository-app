@@ -13,14 +13,24 @@ const styles = StyleSheet.create({
     margin: 10,
     paddingTop: 10,
     borderRadius: 5,
-    padding: 5
+    padding: 5,
+  },
+  delete: {
+    backgroundColor: 'red',
+    color: 'white',
+    textAlign: 'center',
+    height: 40,
+    margin: 10,
+    paddingTop: 10,
+    borderRadius: 5,
+    padding: 5,
   }
 });
 
-const BlueButton = ({ text, onPress, idForTest }) => {
+const BlueButton = ({ text, onPress, idForTest, deleteButton }) => {
   return (
     <Pressable onPress={onPress} testID={idForTest}>
-      <Text style={styles.languageTag}>{text}</Text>
+      <Text style={deleteButton ? styles.delete : styles.languageTag}>{text}</Text>
     </Pressable>
   );
 };

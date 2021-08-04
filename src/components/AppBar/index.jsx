@@ -20,8 +20,6 @@ const styles = StyleSheet.create({
 
 const AppBar = () => {
   const { data } = useQuery(AUTHORIZED_USER);
-  console.log('QUERY RESULT: ', data);
-
   const signOut = useSignOut();
 
   return (
@@ -37,6 +35,13 @@ const AppBar = () => {
           && <Pressable>
             <Link to='/review'>
               <AppBarTab tabTitle={'Create a review'} />
+            </Link>
+          </Pressable>}
+
+          {(data && data.authorizedUser)
+          && <Pressable>
+            <Link to='/myreviews'>
+              <AppBarTab tabTitle={'My reviews'} />
             </Link>
           </Pressable>}
 

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const Review = ({ review }) => {
+const Review = ({ review, reviewActions }) => {
   return (
     <View style={{ padding: 10, backgroundColor: 'white' }}>
       <View style={styles.flexContainer}>
@@ -56,6 +56,7 @@ const Review = ({ review }) => {
           </View>
         </View>
       </View>
+      {reviewActions}
     </View >
   );
 };

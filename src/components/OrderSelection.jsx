@@ -19,7 +19,7 @@ const OrderSelection = ({ setOrder }) => {
         setSelectedOrder(itemValue);
         setOrder(itemValue, '');
       }}>
-        <Picker.Item label='Select ordering...' value='NonOption' enabled={false} />
+        <Picker.Item label='Select order...' value='NON_OPTION' enabled={false} />
         <Picker.Item label='Latest repositories' value='CREATED_AT' />
         <Picker.Item label='Highest rated repositories' value='RATING_AVERAGE_DESC' />
         <Picker.Item label='Lowest rated repositories' value='RATING_AVERAGE_ASC' />
