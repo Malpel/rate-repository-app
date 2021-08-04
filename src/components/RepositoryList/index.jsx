@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
+import { useDebounce } from 'use-debounce/lib';
+import { useHistory } from 'react-router';
 
 import useRepositories from '../../hooks/useRepository';
-import RepositoryListContainer from './RepositoryListContainer';
+import { RepositoryListContainer } from './RepositoryListContainer';
 
+  // this whole thing seems bloated
 const RepositoryList = () => {
-  // ordering stuff seems very stupid
   const [orderSelection, setOrderSelection] = useState({ orderBy: 'CREATED_AT', direction: 'DESC', searchKeyword: '' });
-  const { repositories } = useRepositories(orderSelection.orderBy, orderSelection.direction, orderSelection.searchKeyword);
+  let { repositories } = useRepositories(orderSelection.orderBy, orderSelection.direction, orderSelection.searchKeyword);
+  const [searchQuery, setSearchQuery] = useState();
+  const [value] = useDebounce(searchQuery, 750);
+  const history = useHistory();
 
-  // ordering stuff seems very stupid
+  const onPress = (repoId) => {
+    history.push(`/${repoId}`);
+  };
+
   const setOrder = (itemValue, keyword) => {
     switch (itemValue) {
       case 'RATING_AVERAGE_ASC':
@@ -19,7 +27,6 @@ const RepositoryList = () => {
         setOrderSelection({ orderBy: 'RATING_AVERAGE', direction: 'DESC', searchKeyword: '' });
         break;
       case 'SEARCH_KEYWORD':
-        console.log('test123: ', keyword);
         setOrderSelection({ ...orderSelection, searchKeyword: keyword });
         break;
       default:
@@ -27,10 +34,15 @@ const RepositoryList = () => {
     }
   };
 
+  useEffect(() => {
+    setOrder('SEARCH_KEYWORD', value);
+  }, [value]);
+
   return (
     <View style={{ marginBottom: 140 }}>
       <RepositoryListContainer repositories={repositories}
-        setOrder={setOrder} />
+        setOrder={setOrder} onPress={onPress}
+        searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
     </View>
   );
 };

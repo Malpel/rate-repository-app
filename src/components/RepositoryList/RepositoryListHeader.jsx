@@ -1,14 +1,14 @@
 import React from 'react';
-import { View , StyleSheet} from 'react-native';
+import { View  } from 'react-native';
 
 import Searchbar from '../Searchbar';
 import OrderSelection from '../OrderSelection';
 
-const RepositoryListHeader = ({ setOrder }) => {
+const RepositoryListHeader = ({ setOrder, searchQuery, setSearchQuery }) => {
   return (
     <View>
-      <Searchbar setOrder={setOrder} />
-      <OrderSelection setOrder={setOrder}/>
+      <Searchbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <OrderSelection setOrder={setOrder} />
     </View>
   );
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { FlatList, View, StyleSheet, Pressable } from 'react-native';
-import { useHistory } from 'react-router-native';
 
 import RepositoryItem from './RepositoryItem';
 import RepositoryListHeader from './RepositoryListHeader';
@@ -13,32 +12,34 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ repositories, setOrder }) => {
-  // Get the nodes from the edges array
-  const repositoryNodes = repositories
-    ? repositories.edges.map(edge => edge.node)
-    : [];
+export class RepositoryListContainer extends React.Component {
+  renderHeader = () => {
+    const props = this.props;
 
-  const history = useHistory();
-
-  const onPress = (repoId) => {
-    history.push(`/${repoId}`);
+    return (
+      <RepositoryListHeader setOrder={props.setOrder}
+         searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} />
+    );
   };
 
-  return (
-    <FlatList
-      data={repositoryNodes}
-      ItemSeparatorComponent={ItemSeparator}
-      ListHeaderComponent={() => <RepositoryListHeader setOrder={setOrder}/>}
-      keyExtractor={(item, index) => index.toString()}
-      renderItem={({ item, index }) => (
-        <Pressable onPress={() => onPress(item.id)}>
-          <RepositoryItem item={item} key={index} testID="repoItem" showGitHubButton={false} />
-        </Pressable>
-      )}
-    />
-  );
-};
-
-export default RepositoryListContainer;
-
+  render() {
+    const props = this.props;
+    // Get the nodes from the edges array
+    const repositoryNodes = props.repositories
+      ? props.repositories.edges.map(edge => edge.node)
+      : [];
+    return (
+      <FlatList
+        data={repositoryNodes}
+        ItemSeparatorComponent={ItemSeparator}
+        ListHeaderComponent={this.renderHeader}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item, index }) => (
+          <Pressable onPress={() => props.onPress(item.id)}>
+            <RepositoryItem item={item} key={index} testID="repoItem" showGitHubButton={false} />
+          </Pressable>
+        )}
+      />
+    );
+  }
+}
