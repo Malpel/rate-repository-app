@@ -4,7 +4,7 @@ import * as WebBrowser from 'expo-web-browser';
 
 import RepositoryNumericInfo from './RepositoryNumericInfo';
 import RepositoryTextInfo from './RepositoryTextInfo';
-import BlueButton from '../../BlueButton';
+import Button from '../../Button';
 
 
 const styles = StyleSheet.create({
@@ -58,7 +58,7 @@ const RepositoryItem = ({ item, showGitHubButton }) => {
       <RepositoryNumericInfo forks={item.forksCount} stars={item.stargazersCount}
         rating={item.ratingAverage} reviews={item.reviewCount} />
 
-      {showGitHubButton && <BlueButton text={'GitHub'}
+      {showGitHubButton && <Button text={'GitHub'}
         onPress={() => handleOpenWithWebBrowser(item.url)} />}
     </View>
   );

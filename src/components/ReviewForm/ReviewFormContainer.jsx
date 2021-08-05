@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { View } from 'react-native';
 
 import FormikTextInput from '../FormikTextInput';
-import BlueButton from '../BlueButton';
+import Button from '../Button';
 
 const initialValues = {
   repoOwnerName: '',
@@ -29,7 +29,7 @@ const ReviewFormContainer = ({ onSubmit }) => {
           <FormikTextInput name='repositoryName' placeholder='Repository name' />
           <FormikTextInput name='rating' placeholder='Rating from 0 to 100' keyboardType='numeric' />
           <FormikTextInput name='reviewText' placeholder='Review' multiline />
-          <BlueButton text='Create a review' onPress={handleSubmit} />
+          <Button text='Create a review' onPress={handleSubmit} />
         </View>
       )}
     </Formik>

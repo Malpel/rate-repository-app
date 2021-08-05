@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import FormikTextInput from '../FormikTextInput';
-import BlueButton from '../BlueButton';
+import Button from '../Button';
 
 const styles = {
   container: {
@@ -36,7 +36,7 @@ const SignInContainer = ({ onSubmit }) => {
         <View style={styles.container}>
           <FormikTextInput name="username" placeholder="Username" testID='username' />
           <FormikTextInput name="password" placeholder="Password" secureTextEntry testID='password' />
-          <BlueButton text={'Sign in'} onPress={handleSubmit} idForTest={'submitButton'} />
+          <Button text={'Sign in'} onPress={handleSubmit} idForTest={'submitButton'} />
         </View>
       )}
     </Formik>

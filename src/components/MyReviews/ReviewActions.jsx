@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import BlueButton from '../BlueButton';
+import Button from '../Button';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,10 +16,10 @@ const ReviewActions = ({ repo, viewRepository, review, deleteReview }) => {
   return (
     <View style={styles.container}>
       <View style={styles.flexItem}>
-        <BlueButton text={'View repository'} onPress={() => viewRepository(repo)} />
+        <Button text={'View repository'} onPress={() => viewRepository(repo)} />
       </View>
       <View style={styles.flexItem}>
-        <BlueButton text={'Delete review'} deleteButton={true} onPress={() => deleteReview(review)} />
+        <Button text={'Delete review'} deleteButton={true} onPress={() => deleteReview(review)} />
       </View>
     </View>
   );

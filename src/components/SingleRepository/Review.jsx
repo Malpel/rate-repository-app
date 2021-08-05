@@ -25,14 +25,20 @@ const styles = StyleSheet.create({
 
   icon: {
     flexGrow: 0,
-    paddingRight: 10,
+    marginRight: 10,
     justifyContent: 'center',
     color: theme.colors.primary,
     borderColor: theme.colors.primary,
+    borderWidth: 3,
+    borderRadius: 25,
+    width: 50,
+    height: 50,
+
   },
 
   rating: {
     color: theme.colors.primary,
+    textAlign: 'center'
   }
 });
 
@@ -41,11 +47,11 @@ const Review = ({ review, reviewActions }) => {
     <View style={{ padding: 10, backgroundColor: 'white' }}>
       <View style={styles.flexContainer}>
         <View style={styles.icon}>
-          <Text style={styles.rating}>{review.rating}</Text>
+          <Text fontWeight='bold' style={styles.rating}>{review.rating}</Text>
         </View>
 
         <View style={styles.flexColumn}>
-          <Text style={styles.flexItem}>{review.user.username}</Text>
+          <Text fontWeight='bold' style={styles.flexItem}>{review.user.username}</Text>
           <Text style={styles.flexItem}>{format(new Date(review.createdAt), 'dd.MM.yyyy')}</Text>
 
           <View style={styles.flexItem}>

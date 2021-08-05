@@ -1,8 +1,8 @@
 import React from 'react';
 import { View  } from 'react-native';
 
-import Searchbar from '../Searchbar';
-import OrderSelection from '../OrderSelection';
+import Searchbar from './Searchbar';
+import OrderSelection from './OrderSelection';
 
 const RepositoryListHeader = ({ setOrder, searchQuery, setSearchQuery }) => {
   return (

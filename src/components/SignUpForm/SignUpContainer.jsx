@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { View } from 'react-native';
 
 import FormikTextInput from '../FormikTextInput';
-import BlueButton from '../BlueButton';
+import Button from '../Button';
 
 const initialValues = {
   username: '',
@@ -27,7 +27,7 @@ const SignUpContainer = ({ onSubmit }) => {
           <FormikTextInput name='username' placeholder='Username' />
           <FormikTextInput name='password' placeholder='Password' secureTextEntry />
           <FormikTextInput name='passwordConfirm' placeholder='Confirm password' secureTextEntry/>
-          <BlueButton text='Sign up' onPress={handleSubmit}/>
+          <Button text='Sign up' onPress={handleSubmit}/>
         </View>
       )}
     </Formik>
