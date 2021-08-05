@@ -27,7 +27,7 @@ const MyReviewsContainer = ({ myReviews, onEndReached, viewRepository, deleteRev
       onEndReachedThreshold={0.5}
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item, index }) => (
-        <Review review={item} key={index} reviewActions={
+        <Review review={item} key={index} myReview={true} reviewActions={
           <ReviewActions repo={item.repositoryId} viewRepository={viewRepository}
             review={item.id} deleteReview={deleteReview} />
         }

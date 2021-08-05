@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const Review = ({ review, reviewActions }) => {
+const Review = ({ review, reviewActions, myReview }) => {
   return (
     <View style={{ padding: 10, backgroundColor: 'white' }}>
       <View style={styles.flexContainer}>
@@ -51,7 +51,11 @@ const Review = ({ review, reviewActions }) => {
         </View>
 
         <View style={styles.flexColumn}>
-          <Text fontWeight='bold' style={styles.flexItem}>{review.user.username}</Text>
+          {
+            myReview
+              ?  <Text fontWeight='bold' style={styles.flexItem}>{review.repository.fullName}</Text>
+              : <Text fontWeight='bold' style={styles.flexItem}>{review.user.username}</Text>
+          }
           <Text style={styles.flexItem}>{format(new Date(review.createdAt), 'dd.MM.yyyy')}</Text>
 
           <View style={styles.flexItem}>
